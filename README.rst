@@ -1,8 +1,8 @@
 Async interface to Red Hat Product Pages, using Twisted
 =======================================================
 
-.. image:: https://badge.fury.io/py/errata-tool.svg
-             :target: https://badge.fury.io/py/errata-tool
+.. image:: https://badge.fury.io/py/txproductpages.svg
+             :target: https://badge.fury.io/py/txproductpages
 
 Access Red Hat Product Pages's REST API asyncronously (non-blocking) using the
 Twisted framework.
