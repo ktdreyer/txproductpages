@@ -8,23 +8,19 @@ from txproductpages.exceptions import ProductPagesException
 from txproductpages.exceptions import ReleaseNotFoundException
 
 
-PROD = 'https://pp.engineering.redhat.com/pp-admin/'
-PROD_HUMAN = 'https://pp.engineering.redhat.com/pp/'
+PROD = 'https://pp.engineering.redhat.com/pp/'
 
 
 class Connection(object):
 
-    def __init__(self, url=PROD, human=PROD_HUMAN):
+    def __init__(self, url=PROD):
         """
         Initialize a connection to Product Pages.
 
         :param url: The API URL base, "https://...". Defaults to production
                     environment.
-        :param human: The human-friendly UI URL base. Defaults to production
-                      environment.
         """
         self.url = url
-        self.human = human
 
     @defer.inlineCallbacks
     def upcoming_releases(self, product):
@@ -88,7 +84,7 @@ class Connection(object):
         """
         product, _ = release.split('-', 1)
         url = 'product/%s/release/%s/schedule/tasks' % (product, release)
-        return posixpath.join(self.human, url)
+        return posixpath.join(self.url, url)
 
     @defer.inlineCallbacks
     def _get(self, url, headers={}):
