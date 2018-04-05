@@ -14,6 +14,9 @@ def example():
     try:
         result = yield pp.upcoming_releases('ceph')
         pprint(unmunchify(result))
+        for release in result:
+            url = pp.schedule_url(release.shortname)
+            print(url)
     except ProductPagesException as e:
         print(e)
 
