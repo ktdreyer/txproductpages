@@ -38,3 +38,8 @@ More Examples
 -------------
 
 See ``examples/`` directory
+
+Packages that use this package
+------------------------------
+
+* `helga-productpages <https://pypi.org/project/helga-productpages/>`_
