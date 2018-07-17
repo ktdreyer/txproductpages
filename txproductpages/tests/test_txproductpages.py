@@ -1,7 +1,7 @@
 import os
 from munch import Munch
 from txproductpages import Connection
-from txproductpages import Release
+from txproductpages.release import Release
 from treq.testing import StubTreq
 from twisted.web.resource import Resource
 import pytest
