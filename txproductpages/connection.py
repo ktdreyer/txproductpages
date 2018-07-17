@@ -37,8 +37,9 @@ class Connection(object):
         url = 'api/v6/releases/'
         url = url + '?product__shortname=' + product
         url = url + '&ga_date__gte=' + date.today().strftime('%Y-%m-%d')
+        url = url + '&ordering=shortname_sort'
         releases = yield self._get(url)
-        result = munchify(sorted(releases, key=lambda x: x['shortname']))
+        result = munchify(releases)
         defer.returnValue(result)
 
     @defer.inlineCallbacks
