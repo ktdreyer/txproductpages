@@ -56,6 +56,16 @@ class Connection(object):
             raise ProductPagesException('no upcoming releases')
         defer.returnValue(releases[0].shortname)
 
+    def product_url(self, product):
+        """
+        Return a human-friendly URL for this product.
+
+        :param product: str, eg. "ceph"
+        :returns: str, URL
+        """
+        url = 'product/%s' % product
+        return posixpath.join(self.url, url)
+
     @defer.inlineCallbacks
     def release(self, shortname):
         """

@@ -46,3 +46,11 @@ class TestGetRelease(object):
         assert isinstance(release, Release)
         assert isinstance(release, Munch)
         assert release.shortname == 'ceph-3-0'
+
+
+class TestProductUrl(object):
+
+    def test_product_url(self, monkeypatch):
+        pp = Connection()
+        result = pp.product_url('ceph')
+        assert result == 'https://pp.engineering.redhat.com/pp/product/ceph'
