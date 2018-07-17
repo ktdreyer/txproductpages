@@ -50,7 +50,7 @@ class Connection(object):
         :returns: deferred that when fired returns the shortname of the newest
                   release.
         """
-        releases = yield self.upcoming_releases()
+        releases = yield self.upcoming_releases(product)
         if not releases:
             raise ProductPagesException('no upcoming releases')
         defer.returnValue(releases[0].shortname)
