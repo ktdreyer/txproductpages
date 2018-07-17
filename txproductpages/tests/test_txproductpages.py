@@ -19,7 +19,7 @@ class _ReleaseTestResource(Resource):
 
     def _fixture(self, url):
         """ Return path to our static fixture file. """
-        filename = url.replace('/pp-admin/api/v1', FIXTURES_DIR)
+        filename = url.replace('/pp/api/v6', FIXTURES_DIR)
         # If we need to represent this API endpoint as both a directory and a
         # file, check for a ".body" file.
         if os.path.isdir(filename):
