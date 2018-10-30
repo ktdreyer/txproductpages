@@ -2,14 +2,15 @@ from datetime import date
 from txproductpages import Connection
 from txproductpages.exceptions import ProductPagesException
 from txproductpages import milestones
-from twisted.internet import defer, reactor
+from twisted.internet import defer
+from twisted.internet.task import react
 from pprint import pprint
 
 # Print the development freeze date for the RH Ceph Storage 3.0 release.
 
 
 @defer.inlineCallbacks
-def example():
+def example(reactor):
     pp = Connection()
 
     try:
@@ -34,7 +35,4 @@ def example():
 
 
 if __name__ == '__main__':
-    d = example()
-    d.addCallback(lambda ign: reactor.stop())
-    d.addErrback(lambda ign: reactor.stop())
-    reactor.run()
+    react(example)

@@ -1,14 +1,15 @@
 from munch import unmunchify
 from txproductpages import Connection
 from txproductpages.exceptions import ProductPagesException
-from twisted.internet import defer, reactor
+from twisted.internet import defer
+from twisted.internet.task import react
 from pprint import pprint
 
 # Print the upcoming releases for the RH Ceph Storage product.
 
 
 @defer.inlineCallbacks
-def example():
+def example(reactor):
     pp = Connection()
 
     try:
@@ -22,5 +23,4 @@ def example():
 
 
 if __name__ == '__main__':
-    example().addCallback(lambda ign: reactor.stop())
-    reactor.run()
+    react(example)
