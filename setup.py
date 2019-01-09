@@ -127,8 +127,8 @@ class PyTest(TestCommand):
     def run_tests(self):
         # import here, cause outside the eggs aren't loaded
         import pytest
-        errno = pytest.main('txproductpages --flake8 ' +
-                            self.pytest_args)
+        args = 'txproductpages --flake8 ' + self.pytest_args
+        errno = pytest.main(args.split())
         sys.exit(errno)
 
 
