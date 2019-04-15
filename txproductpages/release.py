@@ -34,7 +34,7 @@ class Release(Munch):
         task_date = None
         for task in tasks:
             if task_re.match(task['name']):
-                (y, m, d) = task['ac_date_finish'].split('-')
+                (y, m, d) = task['date_finish'].split('-')
                 task_date = date(int(y), int(m), int(d))
         if task_date:
             defer.returnValue(task_date)
