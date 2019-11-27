@@ -1,6 +1,9 @@
 Async interface to Red Hat Product Pages, using Twisted
 =======================================================
 
+.. image:: https://travis-ci.org/ktdreyer/txproductpages.svg?branch=master
+             :target: https://travis-ci.org/ktdreyer/txproductpages
+
 .. image:: https://badge.fury.io/py/txproductpages.svg
              :target: https://badge.fury.io/py/txproductpages
 
