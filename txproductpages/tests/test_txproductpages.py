@@ -1,4 +1,5 @@
 import os
+import sys
 from munch import Munch
 from txproductpages import Connection
 from txproductpages.release import Release
@@ -19,6 +20,8 @@ class _ReleaseTestResource(Resource):
 
     def _fixture(self, url):
         """ Return path to our static fixture file. """
+        if sys.version_info >= (3, 0):
+            url = url.decode('utf-8')
         filename = url.replace('/pp/api/v6', FIXTURES_DIR)
         # If we need to represent this API endpoint as both a directory and a
         # file, check for a ".body" file.
