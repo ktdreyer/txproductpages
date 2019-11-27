@@ -2,6 +2,7 @@ from datetime import date
 from munch import Munch
 from munch import munchify
 from twisted.internet import defer
+from txproductpages.exceptions import NoTasksException
 from txproductpages.exceptions import TaskNotFoundException
 
 
@@ -28,10 +29,13 @@ class Release(Munch):
                         See txproductpages.milestones for some useful regex
                         constants to pass in here.
         :returns: deferred that when fired returns a datetime.date object
-        :raises: TaskNotFoundException if no tasks matched.
+        :raises: NoTasksException if this release has no tasks at all.
+                 TaskNotFoundException if no tasks matched.
         """
         tasks = yield self.schedule_tasks()
         task_date = None
+        if not tasks:
+            raise NoTasksException()
         for task in tasks:
             if task_re.match(task['name']):
                 (y, m, d) = task['date_finish'].split('-')
