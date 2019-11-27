@@ -4,4 +4,4 @@ from txproductpages.connection import Connection
 __all__ = ['Connection']
 
 
-__version__ = '1.1.1'
+__version__ = '1.2.0'
