@@ -5,7 +5,8 @@ from txproductpages import Connection
 from txproductpages.release import Release
 from treq.testing import StubTreq
 from twisted.web.resource import Resource
-import pytest
+import pytest_twisted
+
 
 TESTS_DIR = os.path.dirname(os.path.abspath(__file__))
 FIXTURES_DIR = os.path.join(TESTS_DIR, 'fixtures')
@@ -40,7 +41,7 @@ class _ReleaseTestResource(Resource):
 
 class TestGetRelease(object):
 
-    @pytest.inlineCallbacks
+    @pytest_twisted.inlineCallbacks
     def test_get_release(self, monkeypatch):
         monkeypatch.setattr('txproductpages.connection.treq',
                             StubTreq(_ReleaseTestResource()))
