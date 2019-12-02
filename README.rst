@@ -17,11 +17,12 @@ Simple example: Fetching a release
 .. code-block:: python
 
     from txproductpages import Connection
-    from twisted.internet import defer, reactor
+    from twisted.internet import defer
+    from twisted.internet.task import react
 
 
     @defer.inlineCallbacks
-    def example():
+    def example(reactor):
         pp = Connection()
         # fetch a release
         try:
@@ -33,8 +34,7 @@ Simple example: Fetching a release
 
 
     if __name__ == '__main__':
-        example().addCallback(lambda ign: reactor.stop())
-        reactor.run()
+        react(example)
 
 
 More Examples
